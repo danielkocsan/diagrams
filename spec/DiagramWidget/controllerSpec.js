@@ -1,8 +1,10 @@
-define([], function () {
+define(['mock/handlebars', 'mock/dom'], function (handlebarsMockGenerator, domMockGenerator) {
     describe('DiagramWidget controller', function() {
-        var DiagramWidget, diagramComponentMock;
+        var DiagramWidget, diagramComponentMock, jsonModel, onLoadCallback, domMock;
 
         beforeEach(function (done) {
+            domMock = domMockGenerator.generate();
+
             diagramComponentMock = {
                 init: jasmine.createSpy()
             };
@@ -30,6 +32,8 @@ define([], function () {
             define('app/common/jsonModel', [], function () {
                 return jsonModel;
             });
+
+            handlebarsMockGenerator.generate();
         });
 
         it('should be a constructor', function () {
@@ -42,14 +46,13 @@ define([], function () {
                 mockUrl = 'mock';
 
             beforeEach(function () {
-                instance = new DiagramWidget(mockUrl);
+                instance = new DiagramWidget(mockUrl, {querySelector: function() {}, classList: {add: function () {}}});
             });
 
             it('should load the corresponding json data', function () {
                 expect(jsonModel.load).toHaveBeenCalled();
                 expect(jsonModel.load).toHaveBeenCalledWith(jasmine.any(String), jasmine.any(Function));
             });
-
         });
     });
 });

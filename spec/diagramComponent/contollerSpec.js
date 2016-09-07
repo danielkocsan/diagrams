@@ -1,4 +1,4 @@
-define([], function () {
+define(['mock/dom'], function (domMockGenerator) {
     describe('diagramComponent controller', function() {
         var diagramComponent,
             jsonModel,
@@ -7,15 +7,7 @@ define([], function () {
             domMock;
 
         beforeEach(function (done) {
-
-            domMock = {
-                createAndAttachElement: jasmine.createSpy('dom.createAndAttachElement')
-            };
-
-            requirejs.undef('app/common/dom');
-            define('app/common/dom', [], function () {
-                return domMock;
-            });
+            domMock = domMockGenerator.generate();
 
             DiagramWidgetMock = jasmine.createSpy('DiagramWidget');
 

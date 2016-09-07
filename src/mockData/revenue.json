@@ -1,0 +1,16 @@
+{
+  "title": "revenue",
+  "colorScheme": "green",
+  "unit": "EUR",
+  "histogram": [10, 50, 30, 70, 90, 40],
+  "elements": [
+    {
+      "title": "tablet",
+      "value": 120000
+    },
+    {
+      "title": "smartphone",
+      "value": 80000
+    }
+  ]
+}

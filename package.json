@@ -4,11 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/karma/bin/karma start",
+    "server": "http-server src -o",
+    "watch": "grunt"
   },
   "author": "daniel@kocsan.hu",
   "license": "ISC",
   "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-sass": "^0.9.2",
+    "grunt-contrib-watch": "^0.6.1",
     "jasmine-core": "^2.5.0",
     "karma": "^1.2.0",
     "karma-jasmine": "^1.0.2",

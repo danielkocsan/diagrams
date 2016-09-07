@@ -15,5 +15,11 @@ define([], function () {
             expect(dom.createAndAttachElement).toBeDefined();
             expect(dom.createAndAttachElement).toEqual(jasmine.any(Function));
         });
+
+        it('should contain appendContent()', function () {
+            expect(dom).toBeDefined();
+            expect(dom.appendContent).toBeDefined();
+            expect(dom.appendContent).toEqual(jasmine.any(Function));
+        });
     });
 });

@@ -1,0 +1,16 @@
+{
+  "title": "visits",
+  "colorScheme": "brown",
+  "histogram": [90, 50, 30, 70, 40, 10],
+  "elements": [
+    {
+      "title": "tablet",
+      "value": 480000000
+    },
+    {
+      "title": "smartphone",
+      "value": 120000000,
+      "unit": "E"
+    }
+  ]
+}

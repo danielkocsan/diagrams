@@ -1,0 +1,11 @@
+<h1>{{title}}<span>{{currency sum unit}}</span></h1>
+
+<svg></svg>
+
+{{#each elements}}
+    <div class="statElement">
+        <h2>{{this.title}}</h2>
+        <span class="share">50%</span>
+        <span class="value">{{currency this.value ../unit}}</span>
+    </div>
+{{/each}}

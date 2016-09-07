@@ -1,0 +1,130 @@
+@import 'colors';
+
+.diagramWidget {
+  width: 270px;
+  color: black;
+  align-items: stretch;
+  position: relative;
+  border-bottom: 2px solid $colorBorderA;
+  padding-bottom: .75em;
+  margin: 1em 0;
+
+  h1 {
+    position: absolute;
+    left: 0;
+    top: 30px;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: $colorTextA;
+    font-size: 1.45em;
+
+    span {
+      display: block;
+      color: $colorTextB;
+      font-size: 1.3em;
+    }
+  }
+
+  h2 {
+    text-transform: capitalize;
+    font-size: 1.15em;
+    margin: .25em 0;
+  }
+
+  .statElement {
+    float: left;
+    width: 50%;
+    font-size: 1.15em;
+
+    &:last-child {
+      text-align: right;
+    }
+
+    .share {
+      color: $colorTextB;
+    }
+
+    .value {
+      padding-left: 1em;
+      color: $colorTextA;
+    }
+  }
+
+  svg {
+    margin: 0 auto;
+    display: block;
+
+    .background {
+      fill: white;
+    }
+
+    .line {
+      fill: none;
+    }
+  }
+
+  &.green {
+    svg > path.valueA {
+      fill: $colorGreenA;
+    }
+    svg > path.valueB {
+      fill: $colorGreenB;
+    }
+    svg > path.histogram {
+      fill: $colorGreenC;
+    }
+    svg > path.line {
+      stroke: $colorGreenD;
+    }
+    .statElement > h2{
+      color: $colorGreenB;
+    }
+    .statElement:last-child > h2{
+      color: $colorGreenA;
+    }
+  }
+
+  &.blue {
+    svg > path.valueA {
+      fill: $colorBlueA;
+    }
+    svg > path.valueB {
+      fill: $colorBlueB;
+    }
+    svg > path.histogram {
+      fill: $colorBlueC;
+    }
+    svg > path.line {
+      stroke: $colorBlueD;
+    }
+    .statElement > h2{
+      color: $colorBlueB;
+    }
+    .statElement:last-child > h2{
+      color: $colorBlueA;
+    }
+  }
+
+  &.brown {
+    svg > path.valueA {
+      fill: $colorBrownA;
+    }
+    svg > path.valueB {
+      fill: $colorBrownB;
+    }
+    svg > path.histogram {
+      fill: $colorBrownC;
+      stoke: red;
+    }
+    svg > path.line {
+      stroke: $colorBrownD;
+    }
+    .statElement > h2{
+      color: $colorBrownB;
+    }
+    .statElement:last-child > h2{
+      color: $colorBrownA;
+    }
+  }
+}

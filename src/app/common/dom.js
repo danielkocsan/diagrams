@@ -6,6 +6,10 @@ define([], function () {
             container.appendChild(element);
 
             return element;
+        },
+
+        appendContent: function (element, html) {
+            element.innerHTML = html;
         }
     };
 });

@@ -3,8 +3,9 @@ define(['app/common/jsonModel', 'app/DiagramWidget/controller', 'app/common/dom'
     var CONF_URL = '/mockData/diagramConfiguration.json';
 
     function initWidget(componentContainer, configuration) {
-        dom.createAndAttachElement('div', componentContainer);
-        DiagramWidget(configuration.source);
+        var element = dom.createAndAttachElement('div', componentContainer);
+        element.className = 'diagramWidget';
+        DiagramWidget(configuration.source, element);
     }
 
     function onLoad(componentContainer, configurationList) {
