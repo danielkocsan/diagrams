@@ -62,17 +62,15 @@ define([
             return path;
         }
 
-        function drawDiagram(data) {
-            var valueA = data.elements[0].value,
-                valueB = data.elements[1].value,
-                percentage = 100 - percentageCalculator.calculateFromShares(valueA, valueB),
+        function drawDiagram(data, percentage) {
+            var
                 radius = 82,
-                tickness = 8,
+                thickness = 8,
                 canvas = generateCanvas(radius*2, radius*2);
 
-            var arcA = createArc(radius-tickness, radius, 0, percentage);
-            var arcB = createArc(radius-tickness, radius, 0, 360);
-            var arcBackground = createArc(radius-tickness-3, radius+50, 0, 360);
+            var arcA = createArc(radius-thickness, radius, 0, percentage);
+            var arcB = createArc(radius-thickness, radius, 0, 360);
+            var arcBackground = createArc(radius-thickness-3, radius+50, 0, 360);
             var histogram = createHistogram(radius*2, 50, data.histogram);
 
             appendElementToCanvas(canvas, histogram.area, 0, 100, 'histogram', data.histogram);
@@ -83,15 +81,26 @@ define([
         }
 
         function onLoad(data) {
-            data.sum = data.elements[0].value + data.elements[1].value;
-            var template = Handlebars.compile(templateSource);
-            var html = template(data);
+            var valueA = data.elements[0].value,
+                valueB = data.elements[1].value,
+                percentage = 100 - percentageCalculator.calculateFromShares(valueA, valueB),
+                template = Handlebars.compile(templateSource);
 
-            dom.appendContent(container, html);
+                data.sum = valueA + valueB;
+
+            data.elements.map(function (element, index) {
+                if (index == 0) {
+                    element.share = 100 -percentage;
+                } else {
+                    element.share = percentage;
+                }
+            });
+
+            dom.appendContent(container, template(data));
 
             container.classList.add(data.colorScheme);
 
-            drawDiagram(data);
+            drawDiagram(data, percentage);
         }
 
         jsonModel.load(SOURCE_PATH + sourceFileName, onLoad);
