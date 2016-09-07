@@ -1,0 +1,11 @@
+[
+    {
+        "source": "revenue.json"
+    },
+    {
+        "source": "impressions.json"
+    },
+    {
+        "source": "visits.json"
+    }
+]
